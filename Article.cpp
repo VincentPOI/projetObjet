@@ -14,18 +14,30 @@
 #include "Article.h"
 
 Article::Article() {
-    
+    this->refArticle = "NA";
+    this->marqueArticle = "NA";
+    this->modeleArticle = "NA";
+    this->prixJourArticle = NULL;
+    this->nbStockarticle = 0;
 }
 
 Article::Article(string refArticle, string marqueArticle, string modeleArticle, double prixJourArticle, int nbStockarticle) {
-
+    this->refArticle = refArticle;
+    this->marqueArticle = marqueArticle;
+    this->modeleArticle = modeleArticle;
+    this->prixJourArticle = prixJourArticle;
+    this->nbStockarticle = nbStockarticle;
 }
 
 Article::~Article() {
 }
 
 int Article::affiche() {
-
+    cout<<"Reference de l'article : "<<this->refArticle<<endl;
+    cout<<"Marque de l'article : "<<this->marqueArticle<<endl;
+    cout<<"Modele de l'article : "<<this->modeleArticle<<endl;
+    cout<<"Prix par jour de l'article : "<<this->prixJourArticle<<endl;
+    cout<<"Nombre d'article en stock : "<<this->nbStockarticle<<endl;
 }
 
 

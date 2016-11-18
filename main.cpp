@@ -13,13 +13,20 @@
 
 #include <cstdlib>
 
+#include "Article.h"
+#include "MaterielLit.h"
+
 using namespace std;
 
 /*
  * 
  */
 int main(int argc, char** argv) {
-
+    
+    Article robert = new Article("AZ1235","asus","rog", 15.6, 10 );
+    MaterielLit bidule = new MaterielLit()
+    robert.affiche();
+    
     return 0;
 }
 
