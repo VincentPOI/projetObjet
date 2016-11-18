@@ -33,7 +33,7 @@ Article::~Article() {
 }
 
 int Article::affiche() {
-    cout<<"Reference de l'article : "<<this->refArticle<<endl;
+    cout<<"*************** Article : "<<this->refArticle<<" ***************"<<endl;
     cout<<"Marque de l'article : "<<this->marqueArticle<<endl;
     cout<<"Modele de l'article : "<<this->modeleArticle<<endl;
     cout<<"Prix par jour de l'article : "<<this->prixJourArticle<<endl;
