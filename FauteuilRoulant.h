@@ -13,13 +13,24 @@
 
 #ifndef FAUTEUILROULANT_H
 #define FAUTEUILROULANT_H
+#include "Article.h"
+#include <string>
+using namespace std;
 
-class FauteuilRoulant {
+class FauteuilRoulant:public Article {    
 public:
     FauteuilRoulant();
-    FauteuilRoulant(const FauteuilRoulant& orig);
+    FauteuilRoulant(double, double);
     virtual ~FauteuilRoulant();
+    affiche();
+    void setLargeurAssise(double);
+    double getLargeurAssise();
+    void setPoidsFauteuil(double);
+    double getPoidsFauteuil();
 private:
+    double largeurAssise;
+    double poidsFauteuil;
+    
 
 };
 
