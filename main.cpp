@@ -23,9 +23,10 @@ using namespace std;
  */
 int main(int argc, char** argv) {
     
-    Article robert = new Article("AZ1235","asus","rog", 15.6, 10 );
-    MaterielLit bidule = new MaterielLit()
+    Article robert("AZ1235","asus","rog", 15.6, 10 );
+    MaterielLit bidule("AZ1235","asus","rog", 15.6, 10,42,"5*6*9","lit d'alité" );
     robert.affiche();
+    bidule.affiche();
     
     return 0;
 }

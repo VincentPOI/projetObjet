@@ -18,19 +18,18 @@ MaterielLit::MaterielLit():Article() {
     this->poidsMaxAdmissible = NULL;
 }
 
-int MaterielLit::affiche() {
-    Article::affiche();
-    cout<<"Dimension du materiel de lit : "<<this->dimensionLit<<endl;
-    cout<<"Poids maximum du materiel : "<<this->poidsMaxAdmissible<<endl;
-    
-}
-
-
-MaterielLit::MaterielLit(string refArticle,string marqueArticle,string modeleArticle, double prixJourArticle,int nbStockarticle ,double poidsMaxAdmissible, string dimensionLit): Article(refArticle,marqueArticle,modeleArticle,prixJourArticle,nbStockarticle){
+MaterielLit::MaterielLit(string refArticle,string marqueArticle,string modeleArticle, double prixJourArticle,int nbStockarticle ,double poidsMaxAdmissible, string dimensionLit, string typeMateriel): Article(refArticle,marqueArticle,modeleArticle,prixJourArticle,nbStockarticle){
     this->dimensionLit = dimensionLit;
     this->poidsMaxAdmissible = poidsMaxAdmissible;
+    this->typeMateriel = typeMateriel;
 }
 
+int MaterielLit::affiche() {
+    Article::affiche();
+    cout<<"Type de materiel: "<<this->typeMateriel<<endl;
+    cout<<"Dimension du materiel de lit : "<<this->dimensionLit<<endl;
+    cout<<"Poids maximum du materiel : "<<this->poidsMaxAdmissible<<endl;  
+}
 
 MaterielLit::~MaterielLit() {
 }
@@ -49,5 +48,13 @@ void MaterielLit::setPoidsMaxAdmissible(double poidsMaxAdmissible) {
 
 double MaterielLit::getPoidsMaxAdmissible() const {
     return poidsMaxAdmissible;
+}
+
+void MaterielLit::setTypeMateriel(string typeMateriel) {
+    this->typeMateriel = typeMateriel;
+}
+
+string MaterielLit::getTypeMateriel() const {
+    return typeMateriel;
 }
 

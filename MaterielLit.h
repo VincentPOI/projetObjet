@@ -21,16 +21,19 @@ using namespace std ;
 class MaterielLit : public Article {
 public:
     MaterielLit();
-    MaterielLit(double, string);
+    MaterielLit(string, string, string, double , int, double, string, string);
     affiche();
     virtual ~MaterielLit();
     void setDimensionLit(string dimensionLit);
     string getDimensionLit() const;
     void setPoidsMaxAdmissible(double poidsMaxAdmissible);
     double getPoidsMaxAdmissible() const;
-protected:
+    void setTypeMateriel(string typeMateriel);
+    string getTypeMateriel() const;
+private:
     double poidsMaxAdmissible;
     string dimensionLit;
+    string typeMateriel;
    
 };
 
