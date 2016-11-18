@@ -26,6 +26,12 @@ FauteuilRoulant::FauteuilRoulant(string refArticle,string marqueArticle,string m
 FauteuilRoulant::~FauteuilRoulant() {
 }
 
+void FauteuilRoulant::affiche(){
+    Article::affiche();
+    cout<<"Largeur de l'assise :"<<this->largeurAssise<<endl;
+    cout<<"Poids du fauteuil :"<<this->poidsFauteuil<<endl;
+}
+
 void FauteuilRoulant::setLargeurAssise(double largeurAssise){
     this->largeurAssise=largeurAssise;
 }
