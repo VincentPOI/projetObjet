@@ -36,6 +36,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/Article.o \
+	${OBJECTDIR}/Client.o \
 	${OBJECTDIR}/FauteuilRoulant.o \
 	${OBJECTDIR}/MatelasAir.o \
 	${OBJECTDIR}/MaterielLit.o \
@@ -71,6 +72,11 @@ ${OBJECTDIR}/Article.o: Article.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Article.o Article.cpp
+
+${OBJECTDIR}/Client.o: Client.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Client.o Client.cpp
 
 ${OBJECTDIR}/FauteuilRoulant.o: FauteuilRoulant.cpp
 	${MKDIR} -p ${OBJECTDIR}
