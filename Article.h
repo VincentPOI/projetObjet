@@ -21,7 +21,7 @@ class Article {
 public:
     Article();
     Article(string refArticle, string marqueArticle, string modeleArticle, double prixJourArticle, int nbStockarticle);
-    void affiche();
+    virtual void affiche();
     virtual ~Article();
     void setNbStockarticle(int nbStockarticle);
     int getNbStockarticle() const;
@@ -33,8 +33,9 @@ public:
     string getMarqueArticle() const;
     void setRefArticle(string refArticle);
     string getRefArticle() const;
-protected:
+    bool operator==(const Article &a);
     string refArticle;
+protected:
     string marqueArticle;
     string modeleArticle;
     double prixJourArticle;

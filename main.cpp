@@ -16,6 +16,10 @@
 #include "Article.h"
 #include "MaterielLit.h"
 #include "FauteuilRoulant.h"
+#include "Location.h"
+#include "Magasin.h"
+#include "MatelasAir.h"
+#include "SouleveMalade.h"
 
 using namespace std;
 
@@ -24,9 +28,15 @@ using namespace std;
  */
 int main(int argc, char** argv) {
     
+    
     Article robert("AZ1235","asus","rog", 15.6, 10 );
-    MaterielLit bidule;
+    list<Article> listeArticle;
+    listeArticle.push_back(robert);
+    MaterielLit bidule; 
     FauteuilRoulant gerard("AA0000","ferreari","viper",15.6,10,200,200);
+    Location pc("26/11/16", 16.2);
+    pc.ajoutArticle(robert);
+    pc.afficheListeArticle();
     gerard.affiche();
     bidule.affiche();
     robert.affiche();

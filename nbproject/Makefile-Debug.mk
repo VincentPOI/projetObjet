@@ -38,6 +38,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/Article.o \
 	${OBJECTDIR}/Client.o \
 	${OBJECTDIR}/FauteuilRoulant.o \
+	${OBJECTDIR}/Location.o \
 	${OBJECTDIR}/MatelasAir.o \
 	${OBJECTDIR}/MaterielLit.o \
 	${OBJECTDIR}/SouleveMalade.o \
@@ -82,6 +83,11 @@ ${OBJECTDIR}/FauteuilRoulant.o: FauteuilRoulant.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/FauteuilRoulant.o FauteuilRoulant.cpp
+
+${OBJECTDIR}/Location.o: Location.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Location.o Location.cpp
 
 ${OBJECTDIR}/MatelasAir.o: MatelasAir.cpp
 	${MKDIR} -p ${OBJECTDIR}

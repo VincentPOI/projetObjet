@@ -46,7 +46,41 @@ void Location::affiche() {
 }
 
 double Location::calculMontant() {
-    //NE FAIT RIEN
+    //A FAIRE
+}
+
+void Location::setListeArticle(list<Article> listeArticle) {
+    this->listeArticle=listeArticle;
+}
+
+list<Article> Location::getListeArticle() {
+    return this->listeArticle;
+}
+
+void Location::ajoutArticle(const Article &a) {
+    bool dejaPresent=false;
+    if(this->listeArticle.empty()){
+        cout<<"Liste d'article vide, ajout de l'article"<<endl;
+        this->listeArticle.push_front(a);
+    } else {
+        for (list<Article>::iterator it = this->listeArticle.begin(); it!=this->listeArticle.end(); it++){
+            if (*it == a){
+                cout<<"Article déjà présent"<<endl;
+                dejaPresent=true;
+                break;
+            }
+        }
+        if(!dejaPresent){
+            this->listeArticle.push_front(a);
+        }
+    }
+}
+
+void Location::afficheListeArticle() {
+    for (list<Article>::iterator it = this->listeArticle.begin(); it!=this->listeArticle.end(); it++){
+        cout<<"Nom de l'article: "<<endl;
+        it->affiche();
+    }
 }
 
 

@@ -7,6 +7,7 @@
       <itemPath>Article.h</itemPath>
       <itemPath>Client.h</itemPath>
       <itemPath>FauteuilRoulant.h</itemPath>
+      <itemPath>Location.h</itemPath>
       <itemPath>MatelasAir.h</itemPath>
       <itemPath>MaterielLit.h</itemPath>
       <itemPath>SouleveMalade.h</itemPath>
@@ -21,6 +22,7 @@
       <itemPath>Article.cpp</itemPath>
       <itemPath>Client.cpp</itemPath>
       <itemPath>FauteuilRoulant.cpp</itemPath>
+      <itemPath>Location.cpp</itemPath>
       <itemPath>MatelasAir.cpp</itemPath>
       <itemPath>MaterielLit.cpp</itemPath>
       <itemPath>SouleveMalade.cpp</itemPath>
@@ -59,6 +61,10 @@
       <item path="FauteuilRoulant.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="FauteuilRoulant.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Location.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Location.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="MatelasAir.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -106,6 +112,10 @@
       <item path="FauteuilRoulant.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="FauteuilRoulant.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Location.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Location.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="MatelasAir.cpp" ex="false" tool="1" flavor2="0">
       </item>

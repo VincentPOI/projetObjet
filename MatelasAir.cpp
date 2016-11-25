@@ -51,6 +51,10 @@ double MatelasAir::getTempsGonflage(){
     return this->tempsGonflage;
 }
 
+void MatelasAir::affiche() {
+
+}
+
 
 MatelasAir::~MatelasAir() {
 }
