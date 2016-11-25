@@ -17,12 +17,12 @@
 #include <string>
 using namespace std;
 
-class SouleveMalade {
+class SouleveMalade : public Article {
 public:
     SouleveMalade();
-    SouleveMalade(int, int);
+    SouleveMalade(string, string, string, double, int, int, int);
     virtual ~SouleveMalade();
-    affiche();
+    void affiche();
     void setCapaciteLevage(int);
     int getCapaciteLevage();
     void setDegrePivotFleau(int);

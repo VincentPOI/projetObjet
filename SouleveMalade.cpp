@@ -15,9 +15,9 @@
 
 #include "SouleveMalade.h"
 
-SouleveMalade::SouleveMalade() {
-    this->capaciteLevage=NULL;
-    this->degrePivotFleau=NULL;
+SouleveMalade::SouleveMalade():Article() {
+    this->capaciteLevage=0;
+    this->degrePivotFleau=0;
 }
 
 SouleveMalade::SouleveMalade(string refArticle,string marqueArticle,string modeleArticle, double prixJourArticle,int nbStockarticle, int capaciteLevage, int degrePivotFleau):Article(refArticle,marqueArticle,modeleArticle,prixJourArticle,nbStockarticle) {
