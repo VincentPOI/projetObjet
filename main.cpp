@@ -15,6 +15,7 @@
 
 #include "Article.h"
 #include "MaterielLit.h"
+#include "FauteuilRoulant.h"
 
 using namespace std;
 
@@ -23,8 +24,11 @@ using namespace std;
  */
 int main(int argc, char** argv) {
     
-    Article robert = new Article("AZ1235","asus","rog", 15.6, 10 );
-    MaterielLit bidule = new MaterielLit()
+    Article robert("AZ1235","asus","rog", 15.6, 10 );
+    MaterielLit bidule;
+    FauteuilRoulant gerard("AA0000","ferreari","viper",15.6,10,200,200);
+    gerard.affiche();
+    bidule.affiche();
     robert.affiche();
     
     return 0;

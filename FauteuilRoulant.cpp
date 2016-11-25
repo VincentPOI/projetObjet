@@ -14,8 +14,8 @@
 #include "FauteuilRoulant.h"
 
 FauteuilRoulant::FauteuilRoulant():Article() {
-    this->largeurAssise=NULL;
-    this->poidsFauteuil=NULL;            
+    this->largeurAssise=0;
+    this->poidsFauteuil=0;            
 }
 
 FauteuilRoulant::FauteuilRoulant(string refArticle,string marqueArticle,string modeleArticle, double prixJourArticle,int nbStockarticle, double largeurAssise, double poidsFauteuil):Article(refArticle,marqueArticle,modeleArticle,prixJourArticle,nbStockarticle) {
@@ -28,8 +28,8 @@ FauteuilRoulant::~FauteuilRoulant() {
 
 void FauteuilRoulant::affiche(){
     Article::affiche();
-    cout<<"Largeur de l'assise :"<<this->largeurAssise<<endl;
-    cout<<"Poids du fauteuil :"<<this->poidsFauteuil<<endl;
+    cout<<"Largeur de l'assise : "<<this->largeurAssise<<endl;
+    cout<<"Poids du fauteuil : "<<this->poidsFauteuil<<endl;
 }
 
 void FauteuilRoulant::setLargeurAssise(double largeurAssise){

@@ -21,7 +21,7 @@ class Article {
 public:
     Article();
     Article(string refArticle, string marqueArticle, string modeleArticle, double prixJourArticle, int nbStockarticle);
-    affiche();
+    void affiche();
     virtual ~Article();
     void setNbStockarticle(int nbStockarticle);
     int getNbStockarticle() const;

@@ -21,8 +21,8 @@ using namespace std ;
 class MaterielLit : public Article {
 public:
     MaterielLit();
-    MaterielLit(double, string);
-    affiche();
+    MaterielLit(string, string, string, double, int, double, string, string);
+    void affiche();
     virtual ~MaterielLit();
     void setDimensionLit(string dimensionLit);
     string getDimensionLit() const;
@@ -31,6 +31,7 @@ public:
 protected:
     double poidsMaxAdmissible;
     string dimensionLit;
+    string typeMateriel;
    
 };
 

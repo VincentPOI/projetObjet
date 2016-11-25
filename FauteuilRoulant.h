@@ -17,12 +17,12 @@
 #include <string>
 using namespace std;
 
-class FauteuilRoulant:public Article {    
+class FauteuilRoulant : public Article {    
 public:
     FauteuilRoulant();
-    FauteuilRoulant(double, double);
+    FauteuilRoulant(string, string, string, double, int, double, double);
     virtual ~FauteuilRoulant();
-    affiche();
+    void affiche();
     void setLargeurAssise(double);
     double getLargeurAssise();
     void setPoidsFauteuil(double);
