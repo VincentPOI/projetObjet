@@ -22,7 +22,7 @@ public:
     SouleveMalade();
     SouleveMalade(string, string, string, double, int, int, int);
     virtual ~SouleveMalade();
-    virtual void affiche();
+    void affiche();
     void setCapaciteLevage(int);
     int getCapaciteLevage();
     void setDegrePivotFleau(int);

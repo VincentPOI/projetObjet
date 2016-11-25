@@ -14,12 +14,10 @@
 #include <cstdlib>
 
 #include "Article.h"
-#include "MaterielLit.h"
 #include "FauteuilRoulant.h"
-#include "Location.h"
+#include "MaterielLit.h"
 #include "Magasin.h"
-#include "MatelasAir.h"
-#include "SouleveMalade.h"
+#include <list>
 
 using namespace std;
 
@@ -28,19 +26,20 @@ using namespace std;
  */
 int main(int argc, char** argv) {
     
-    
     Article robert("AZ1235","asus","rog", 15.6, 10 );
-    list<Article> listeArticle;
-    listeArticle.push_back(robert);
-    MaterielLit bidule; 
+    MaterielLit bidule;
     FauteuilRoulant gerard("AA0000","ferreari","viper",15.6,10,200,200);
-    Location pc("26/11/16", 16.2);
-    pc.ajoutArticle(robert);
-    pc.afficheListeArticle();
     gerard.affiche();
     bidule.affiche();
     robert.affiche();
     
+    
+    Magasin surf;
+    surf.ajouterArticle();
+    surf.ajouterArticle();
+    for (list<Article>::iterator it = surf.getListeArticle().begin(); it != surf.getListeArticle().end(); it++){
+        it->affiche();
+    }
     return 0;
 }
 

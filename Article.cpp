@@ -32,14 +32,6 @@ Article::Article(string refArticle, string marqueArticle, string modeleArticle, 
 Article::~Article() {
 }
 
-void Article::affiche() {
-    cout << "************** Article : " << this->refArticle << " ***************" << endl;
-    cout << "Marque de l'article : " << this->marqueArticle << endl;
-    cout << "Modele de l'article : " << this->modeleArticle << endl;
-    cout << "Prix par jour de l'article : " << this->prixJourArticle << endl;
-    cout << "Nombre d'article en stock : " << this->nbStockarticle << endl;
-}
-
 void Article::setNbStockarticle(int nbStockarticle) {
     this->nbStockarticle = nbStockarticle;
 }
@@ -80,17 +72,3 @@ string Article::getRefArticle() const {
     return refArticle;
 }
 
-bool Article::operator==(const Article& a) {
-    if (this->refArticle == a.refArticle) {
-        if (this->marqueArticle == a.marqueArticle) {
-            if (this->modeleArticle == a.modeleArticle) {
-                if (this->prixJourArticle == a.prixJourArticle) {
-                    if (this->nbStockarticle == a.nbStockarticle) {
-                        return true;
-                    }
-                }
-            }
-        }
-    }
-    return false;
-}

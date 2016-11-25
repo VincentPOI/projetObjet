@@ -15,13 +15,20 @@
 #define ARTICLE_H
 #include<iostream>
 #include <string>
-using namespace std ;
+using namespace std;
 
 class Article {
 public:
     Article();
     Article(string refArticle, string marqueArticle, string modeleArticle, double prixJourArticle, int nbStockarticle);
-    virtual void affiche();
+
+    virtual void affiche() {
+        cout << "************** Article : " << this->refArticle << " ***************" << endl;
+        cout << "Marque de l'article : " << this->marqueArticle << endl;
+        cout << "Modele de l'article : " << this->modeleArticle << endl;
+        cout << "Prix par jour de l'article : " << this->prixJourArticle << endl;
+        cout << "Nombre d'article en stock : " << this->nbStockarticle << endl;
+    };
     virtual ~Article();
     void setNbStockarticle(int nbStockarticle);
     int getNbStockarticle() const;
@@ -33,9 +40,8 @@ public:
     string getMarqueArticle() const;
     void setRefArticle(string refArticle);
     string getRefArticle() const;
-    bool operator==(const Article &a);
-    string refArticle;
 protected:
+    string refArticle;
     string marqueArticle;
     string modeleArticle;
     double prixJourArticle;

@@ -16,13 +16,13 @@
 Client::Client() {
     this->refClient = "NA";
     this->adresseClient = "NA";
+    this->numeroTelephoneClient = "NA";
 }
 
-Client::Client(string refClient, string adresseClient, string numeroTelephoneClient, list<Location> listeLocation) {
+Client::Client(string refClient, string adresseClient, string numeroTelephoneClient) {
     this->refClient = refClient;
     this->adresseClient = adresseClient;
     this->numeroTelephoneClient = numeroTelephoneClient;
-    this->listeLocaiton=listeLocation;
 }
 
 void Client::affiche() {
@@ -53,14 +53,6 @@ void Client::setNumeroTelephoneClient(string numeroTelephoneClient){
 
 string Client::getNumeroTelephoneClient(){
     return this->numeroTelephoneClient;
-}
-
-void Client::setListeLocation(list<Location> listeLocation) {
-    this->listeLocaiton=listeLocation;
-}
-
-list<Location> Client::getListeLocation() {
-    return this->listeLocaiton;
 }
 
 Client::~Client() {
