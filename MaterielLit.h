@@ -22,7 +22,7 @@ class MaterielLit : public Article {
 public:
     MaterielLit();
     MaterielLit(string, string, string, double, int, double, string, string);
-    virtual void affiche();
+    void affiche();
     virtual ~MaterielLit();
     void setDimensionLit(string dimensionLit);
     string getDimensionLit() const;

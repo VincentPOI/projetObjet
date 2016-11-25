@@ -21,6 +21,11 @@ MatelasAir::MatelasAir() : Article() {
     this->tempsGonflage = 0;
 }
 
+void MatelasAir::affiche() {
+
+}
+
+
 MatelasAir::MatelasAir(string refArticle, string marqueArticle, string modeleArticle, double prixJourArticle, int nbStockarticle, int poidsMaximumeSupporte, string dimensionMatelas, double tempsGonflage) : Article(refArticle,marqueArticle,modeleArticle,prixJourArticle,nbStockarticle) {
     this->poidsMaximumSupporte = poidsMaximumeSupporte;
     this->dimensionMatelas = dimensionMatelas;
@@ -49,10 +54,6 @@ void MatelasAir::setTempsGonflage(double tempsGonflage){
 
 double MatelasAir::getTempsGonflage(){
     return this->tempsGonflage;
-}
-
-void MatelasAir::affiche() {
-
 }
 
 

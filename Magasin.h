@@ -16,11 +16,16 @@
 #include <list>
 #include "Article.h"
 #include "Client.h"
+#include<iostream>
+#include <string>
+using namespace std ;
 
 class Magasin {
 public:
     Magasin();
     Magasin(list<Article>,list<Client>);
+    void ajouterArticle();
+    void jeterArticle();
     void afficheArticlesDisponibles();
     void afficheListeLocations(Client);
     void restitutionArticle(Client);
