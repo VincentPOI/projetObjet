@@ -22,7 +22,7 @@ class MatelasAir : public Article {
 public:
     MatelasAir();
     MatelasAir(string, string, string, double, int, int, string, double);
-    void affiche();
+    void affiche(ostream& ostr);
     virtual ~MatelasAir();
     void setPoidsMaximumSupporte(int poidsMaximumSupporte);
     int getPoidsMaximumSupprote();

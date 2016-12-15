@@ -22,7 +22,7 @@ public:
     FauteuilRoulant();
     FauteuilRoulant(string, string, string, double, int, double, double);
     virtual ~FauteuilRoulant();
-    void affiche();
+    void affiche(ostream& ostr);
     void setLargeurAssise(double);
     double getLargeurAssise();
     void setPoidsFauteuil(double);

@@ -14,7 +14,9 @@
 #ifndef CLIENT_H
 #define CLIENT_H
 #include <iostream>
+#include <list>
 #include <string>
+#include "Location.h"
 using namespace std;
 
 class Client {
@@ -29,10 +31,13 @@ public:
     string getAdresseClient();
     void setNumeroTelephoneClient(string numeroTelephoneClient);
     string getNumeroTelephoneClient();
+    void setLocations(list<Location> locations);
+    list<Location> getLocations() const;
 private:
     string refClient;
     string adresseClient;
     string numeroTelephoneClient;
+    list <Location> locations;
 };
 
 #endif /* CLIENT_H */

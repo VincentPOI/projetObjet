@@ -21,15 +21,9 @@ class Article {
 public:
     Article();
     Article(string refArticle, string marqueArticle, string modeleArticle, double prixJourArticle, int nbStockarticle);
-
-    virtual void affiche() {
-        cout << "************** Article : " << this->refArticle << " ***************" << endl;
-        cout << "Marque de l'article : " << this->marqueArticle << endl;
-        cout << "Modele de l'article : " << this->modeleArticle << endl;
-        cout << "Prix par jour de l'article : " << this->prixJourArticle << endl;
-        cout << "Nombre d'article en stock : " << this->nbStockarticle << endl;
-    };
+    virtual void affiche(ostream& ostr);
     virtual ~Article();
+    bool operator <(const Article &v);
     void setNbStockarticle(int nbStockarticle);
     int getNbStockarticle() const;
     void setPrixJourArticle(double prixJourArticle);
@@ -47,6 +41,6 @@ protected:
     double prixJourArticle;
     int nbStockarticle;
 };
-
 #endif /* ARTICLE_H */
+
 

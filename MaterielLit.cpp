@@ -13,26 +13,28 @@
 
 #include "MaterielLit.h"
 
-MaterielLit::MaterielLit():Article() {
+MaterielLit::MaterielLit() : Article() {
     this->dimensionLit = "NA";
     this->poidsMaxAdmissible = 0;
-    this->typeMateriel="NA";
+    this->typeMateriel = "NA";
 }
 
-void MaterielLit::affiche() {
-    Article::affiche();
-    cout<<"Type de materiel : "<<this->typeMateriel<<endl;
-    cout<<"Poids maximum du materiel : "<<this->poidsMaxAdmissible<<endl;
-    cout<<"Dimension du materiel de lit : "<<this->dimensionLit<<endl;
+void MaterielLit::affiche(ostream& ostr) {
+    Article::affiche(ostr);
+    ostr << "Dimension du matériel : " << this->dimensionLit << "\n";
+    ostr << "Poids maximum du materiel : " << this->poidsMaxAdmissible << "\n";
+    if (this->typeMateriel) {
+        ostr << "Type de matériel : Lit médicalisé" << "\n";
+    } else {
+        ostr << "Type de matériel : lit d'alité" << "\n";
+    }
 }
 
-
-MaterielLit::MaterielLit(string refArticle,string marqueArticle,string modeleArticle, double prixJourArticle,int nbStockarticle ,double poidsMaxAdmissible, string dimensionLit, string typeMateriel): Article(refArticle,marqueArticle,modeleArticle,prixJourArticle,nbStockarticle){
+MaterielLit::MaterielLit(string refArticle, string marqueArticle, string modeleArticle, double prixJourArticle, int nbStockarticle, double poidsMaxAdmissible, string dimensionLit, bool typeMateriel) : Article(refArticle, marqueArticle, modeleArticle, prixJourArticle, nbStockarticle) {
     this->dimensionLit = dimensionLit;
     this->poidsMaxAdmissible = poidsMaxAdmissible;
     this->typeMateriel = typeMateriel;
-} 
-
+}
 
 MaterielLit::~MaterielLit() {
 }
@@ -51,5 +53,13 @@ void MaterielLit::setPoidsMaxAdmissible(double poidsMaxAdmissible) {
 
 double MaterielLit::getPoidsMaxAdmissible() const {
     return poidsMaxAdmissible;
+}
+
+void MaterielLit::setTypeMateriel(bool typeMateriel) {
+    this->typeMateriel = typeMateriel;
+}
+
+bool MaterielLit::isTypeMateriel() const {
+    return typeMateriel;
 }
 

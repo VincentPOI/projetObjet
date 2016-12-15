@@ -40,6 +40,14 @@ double Location::getMontantFacture() {
     return this->montantFacture;
 }
 
+void Location::setArticlesLouees(list<Article*> articlesLouees) {
+    this->articlesLouees = articlesLouees;
+}
+
+list<Article*> Location::getArticlesLouees() const {
+    return articlesLouees;
+}
+
 void Location::affiche() {
     cout<<">Date de début de la location: "<<this->dateDebut<<endl;
     cout<<"Montant de la facture à ce jour: "<<this->montantFacture<<endl;

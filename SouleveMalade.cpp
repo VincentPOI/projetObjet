@@ -28,10 +28,10 @@ SouleveMalade::SouleveMalade(string refArticle,string marqueArticle,string model
 SouleveMalade::~SouleveMalade() {
 }
 
-void SouleveMalade::affiche(){
-    Article::affiche();
-    cout<<"Capacité de levage du fauteuil: "<<this->capaciteLevage<<endl;
-    cout<<"Degré de pivot du fléau: "<<this->degrePivotFleau<<endl;
+void SouleveMalade::affiche(ostream& ostr){
+    Article::affiche(ostr);
+    ostr<<"Capacité de levage du fauteuil: "<<this->capaciteLevage<<"\n";
+    ostr<<"Degré de pivot du fléau: "<<this->degrePivotFleau<<"\n";
 }
 
 void SouleveMalade::setCapaciteLevage(int capaciteLevage){

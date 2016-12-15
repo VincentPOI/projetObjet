@@ -55,6 +55,14 @@ string Client::getNumeroTelephoneClient(){
     return this->numeroTelephoneClient;
 }
 
+void Client::setLocations(list<Location> locations) {
+    this->locations = locations;
+}
+
+list<Location> Client::getLocations() const {
+    return locations;
+}
+
 Client::~Client() {
 }
 

@@ -16,30 +16,35 @@
 #include <list>
 #include "Article.h"
 #include "Client.h"
+#include "tri.h"
 #include<iostream>
 #include <string>
+#include <fstream>
 using namespace std ;
 
 class Magasin {
 public:
     Magasin();
-    Magasin(list<Article>,list<Client>);
+    Magasin(list<Article*>,list<Client>);
     void ajouterArticle();
     void jeterArticle();
+    void afficherArticles(ostream& ostr, bool maj);
     void afficheArticlesDisponibles();
+    void majStock();
+    void loadStock();
     void afficheListeLocations(Client);
     void restitutionArticle(Client);
     void enregistrerLocation(Client);
     void calculMontantRecettes(string);
     virtual ~Magasin();
-    void setListeArticle(list<Article> listeArticle);
-    list<Article> getListeArticle() const;
+    void setListeArticle(list<Article*> listeArticle);
+    list<Article*> getListeArticle() const;
     void setListeClients(list<Client> listeClients);
     list<Client> getListeClients() const;
 private:
     list <Client> listeClients;
-    list <Article> listeArticle;
+    list <Article*> listeArticle;
 };
-
 #endif /* MAGASIN_H */
+
 

@@ -21,6 +21,14 @@ Article::Article() {
     this->nbStockarticle = 0;
 }
 
+void Article::affiche(ostream& ostr) {
+    ostr << "************** Article : " << this->refArticle << " ***************" << endl;
+    ostr << "Marque de l'article : " << this->marqueArticle << "\n";
+    ostr << "Modele de l'article : " << this->modeleArticle << "\n";
+    ostr << "Prix par jour de l'article : " << this->prixJourArticle << "\n";
+    ostr << "Nombre d'article en stock : " << this->nbStockarticle << "\n";
+}
+
 Article::Article(string refArticle, string marqueArticle, string modeleArticle, double prixJourArticle, int nbStockarticle) {
     this->refArticle = refArticle;
     this->marqueArticle = marqueArticle;
@@ -30,6 +38,10 @@ Article::Article(string refArticle, string marqueArticle, string modeleArticle, 
 }
 
 Article::~Article() {
+}
+
+bool Article::operator<(const Article& v) {
+    return this->refArticle < v.refArticle;
 }
 
 void Article::setNbStockarticle(int nbStockarticle) {

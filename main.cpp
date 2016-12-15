@@ -18,6 +18,7 @@
 #include "MaterielLit.h"
 #include "Magasin.h"
 #include <list>
+#include <typeinfo>
 
 using namespace std;
 
@@ -26,20 +27,71 @@ using namespace std;
  */
 int main(int argc, char** argv) {
     
-    Article robert("AZ1235","asus","rog", 15.6, 10 );
-    MaterielLit bidule;
-    FauteuilRoulant gerard("AA0000","ferreari","viper",15.6,10,200,200);
-    gerard.affiche();
-    bidule.affiche();
-    robert.affiche();
-    
-    
-    Magasin surf;
-    surf.ajouterArticle();
-    surf.ajouterArticle();
-    for (list<Article>::iterator it = surf.getListeArticle().begin(); it != surf.getListeArticle().end(); it++){
-        it->affiche();
-    }
-    return 0;
+    int menu;
+    Magasin magasin;
+    do
+    {
+        cout<<endl<<" ----------------------- MENU -----------------------"<<endl<<endl;
+        cout<<"1. Creer un Article"<<endl;
+        cout<<"2. Afficher Tout les Articles"<<endl;
+        cout<<"3. Afficher les articles disponibles"<<endl;
+        cout<<"4. Afficher les locations en cours"<<endl;
+        cout<<"5. Enregistrer un Client "<<endl;
+        cout<<"6. afficher recette"<<endl;
+        cout<<"7. "<<endl;
+        cout<<"8. "<<endl;
+        cout<<"9. "<<endl;
+        cout<<"10."<<endl;
+        cout<<"11."<<endl;
+        cout<<"12."<<endl;
+        cout<<"0. "<<endl<<endl;
+        cout<<"Choix : ";
+        cin>>menu;
+        cout<<endl;
+ 
+        switch(menu)
+        {
+            case 0 : break;
+ 
+            case 1 : magasin.ajouterArticle();
+            magasin.majStock();          
+            break;
+ 
+            case 2 : magasin.afficherArticles(cout,false);
+            break;
+ 
+            case 3 :magasin.loadStock();
+            break;
+ 
+            case 4 : ;
+            break;
+ 
+            case 5 : ;
+            break;
+ 
+            case 6 : ;
+            break;
+ 
+            case 7 : ;
+            break;
+ 
+            case 8 : ;
+            break;
+ 
+            case 9 : ;
+            break;
+ 
+            case 10 : ;
+            break;
+ 
+            case 11 : ;
+            break;
+ 
+            case 12 : ;
+ 
+            break;
+        }
+ 
+    }while (menu!=0);
 }
 

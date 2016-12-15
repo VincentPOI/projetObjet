@@ -14,7 +14,9 @@
 #ifndef LOCATION_H
 #define LOCATION_H
 #include <string>
+#include <list>
 #include <iostream>
+#include "Article.h"
 using namespace std;
 
 
@@ -29,9 +31,12 @@ public:
     string getDateDebut();
     void setMontantFacture(double montantFacture);
     double getMontantFacture();
+    void setArticlesLouees(list<Article*> articlesLouees);
+    list<Article*> getArticlesLouees() const;
 private:
     string dateDebut;
     double montantFacture;
+    list <Article*> articlesLouees;
 };
 
 #endif /* LOCATION_H */

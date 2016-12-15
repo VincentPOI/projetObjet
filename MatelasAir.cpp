@@ -21,10 +21,12 @@ MatelasAir::MatelasAir() : Article() {
     this->tempsGonflage = 0;
 }
 
-void MatelasAir::affiche() {
-
+void MatelasAir::affiche(ostream& ostr) {
+    Article::affiche(ostr);
+    ostr<<"Poids maximum suporté : "<<this->poidsMaximumSupporte<<"\n";
+    ostr<<"dimension du matelas : "<<this->dimensionMatelas<<"\n";
+    ostr<<"temps de gonflage : "<<this->tempsGonflage<<"\n";
 }
-
 
 MatelasAir::MatelasAir(string refArticle, string marqueArticle, string modeleArticle, double prixJourArticle, int nbStockarticle, int poidsMaximumeSupporte, string dimensionMatelas, double tempsGonflage) : Article(refArticle,marqueArticle,modeleArticle,prixJourArticle,nbStockarticle) {
     this->poidsMaximumSupporte = poidsMaximumeSupporte;
