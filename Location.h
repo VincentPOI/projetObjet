@@ -23,20 +23,23 @@ using namespace std;
 class Location {
 public:
     Location();
-    Location(string, double);
+    Location(string, double, bool, list<Article*>);
     virtual ~Location();
     double calculMontant();
     void affiche();
     void setDateDebut(string dateDebut);
     string getDateDebut();
+    void setEnCours(bool enCours);
+    bool getEnCours();
     void setMontantFacture(double montantFacture);
     double getMontantFacture();
     void setArticlesLouees(list<Article*> articlesLouees);
     list<Article*> getArticlesLouees() const;
 private:
     string dateDebut;
+    bool enCours;
     double montantFacture;
-    list <Article*> articlesLouees;
+    list <Article*> articlesLoues;
 };
 
 #endif /* LOCATION_H */

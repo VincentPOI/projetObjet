@@ -25,7 +25,7 @@ using namespace std ;
 class Magasin {
 public:
     Magasin();
-    Magasin(list<Article*>,list<Client>);
+    Magasin(list<Article*>,list<Client*>);
     void ajouterArticle();
     void jeterArticle();
     void afficherArticles(ostream& ostr, bool maj);
@@ -35,14 +35,15 @@ public:
     void afficheListeLocations(Client);
     void restitutionArticle(Client);
     void enregistrerLocation(Client);
+    void enregistrerClient();
     void calculMontantRecettes(string);
     virtual ~Magasin();
     void setListeArticle(list<Article*> listeArticle);
     list<Article*> getListeArticle() const;
-    void setListeClients(list<Client> listeClients);
-    list<Client> getListeClients() const;
+    void setListeClients(list<Client*> listeClients);
+    list<Client*> getListeClients() const;
 private:
-    list <Client> listeClients;
+    list <Client*> listeClients;
     list <Article*> listeArticle;
 };
 #endif /* MAGASIN_H */

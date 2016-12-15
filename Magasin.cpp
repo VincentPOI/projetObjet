@@ -24,18 +24,18 @@ Magasin::Magasin() {
 
 }
 
-Magasin::Magasin(list<Article*> listeArticle, list<Client> listeClients) {
+Magasin::Magasin(list<Article*> listeArticle, list<Client*> listeClients) {
     this->listeArticle = listeArticle;
     this->listeClients = listeClients;
 }
 
 void Magasin::ajouterArticle() {
     string typeArticle = "NA";
-    string ref;
-    string marque;
-    string modele;
-    double prix;
-    int stock;
+    string refArticle;
+    string marqueArticle;
+    string modeleArticle;
+    double prixJourArticle;
+    int nbStockArticle;
     cout << "Nouvel article: ";
     while (typeArticle.compare("FR") != 0 && typeArticle.compare("MR") != 0 && typeArticle.compare("SM") != 0 && typeArticle.compare("ML") != 0 && typeArticle.compare("R") != 0) {
         cout << "type d'article?(Fauteuil roulant : FR, Matelas air : MR, Souleve Malade : SM, Materiel lit : ML, retour:R)-> ";
@@ -46,15 +46,15 @@ void Magasin::ajouterArticle() {
         return;
     }
     cout << "Reférence?(0000AZ)";
-    cin >> ref;
+    cin >> refArticle;
     cout << "Marque?";
-    cin >> marque;
-    cout << "modele?";
-    cin >> modele;
+    cin >> marqueArticle;
+    cout << "modeleArticle?";
+    cin >> modeleArticle;
     cout << "Prix a la location, journalier?";
-    cin >> prix;
+    cin >> prixJourArticle;
     cout << "Nombre de cet article en stock?";
-    cin >> stock;
+    cin >> nbStockArticle;
 
     if (typeArticle == "FR") {
         double largeur;
@@ -63,7 +63,7 @@ void Magasin::ajouterArticle() {
         cin >> largeur;
         cout << "poids du fauteuil roulant?";
         cin >> poids;
-        this->listeArticle.push_front(new FauteuilRoulant(ref, marque, modele, prix, stock, largeur, poids));
+        this->listeArticle.push_front(new FauteuilRoulant(refArticle, marqueArticle, modeleArticle, prixJourArticle, nbStockArticle, largeur, poids));
     } else if (typeArticle == "MR") {
         string dimension;
         int pmax;
@@ -74,7 +74,7 @@ void Magasin::ajouterArticle() {
         cin >> pmax;
         cout << "temps de gonflage?";
         cin >> tpsgonfl;
-        this->listeArticle.push_front(new MatelasAir(ref, marque, modele, prix, stock, pmax, dimension, tpsgonfl));
+        this->listeArticle.push_front(new MatelasAir(refArticle, marqueArticle, modeleArticle, prixJourArticle, nbStockArticle, pmax, dimension, tpsgonfl));
     } else if (typeArticle == "SM") {
         int caplevage;
         int degrepivot;
@@ -82,7 +82,7 @@ void Magasin::ajouterArticle() {
         cin >> caplevage;
         cout << "degre pivot fleau?";
         cin >> degrepivot;
-        this->listeArticle.push_front(new SouleveMalade(ref, marque, modele, prix, stock, caplevage, degrepivot));
+        this->listeArticle.push_front(new SouleveMalade(refArticle, marqueArticle, modeleArticle, prixJourArticle, nbStockArticle, caplevage, degrepivot));
     } else if (typeArticle == "ML") {
         double pmax;
         string dimension;
@@ -93,7 +93,7 @@ void Magasin::ajouterArticle() {
         cin >> pmax;
         cout << "dimensions?";
         cin >> dimension;
-        this->listeArticle.push_front(new MaterielLit(ref, marque, modele, prix, stock, pmax, dimension, typemat));
+        this->listeArticle.push_front(new MaterielLit(refArticle, marqueArticle, modeleArticle, prixJourArticle, nbStockArticle, pmax, dimension, typemat));
     }
 }
 
@@ -144,12 +144,12 @@ void Magasin::loadStock() {
         MaterielLit matelatLit;
         while (getline(fichier, ligne)) {
             if (ligne.find("*") != ligne.npos) {
-                ligne = ligne.substr(ligne.find(":")+2);              
-                ligne = ligne.replace(ligne.end()-16,ligne.end(),"");
-                
+                ligne = ligne.substr(ligne.find(":") + 2);
+                ligne = ligne.replace(ligne.end() - 16, ligne.end(), "");
+
                 cout << ligne << endl;
             } else {
-                ligne = ligne.substr(ligne.find(":")+2);
+                ligne = ligne.substr(ligne.find(":") + 2);
                 cout << ligne << endl;
             }
         }
@@ -163,6 +163,109 @@ void Magasin::jeterArticle() {
 }
 
 Magasin::~Magasin() {
+}
+
+void Magasin::enregistrerClient() {
+    string refClient;
+    string adresseClient;
+    string numeroTelephoneClient;
+    int nbLocationClient;
+    int i;
+    string dateDebut;
+    bool enCours = true;
+    double montantFacture = 0;
+    string typeArticle;
+    string refArticle;
+    string marqueArticle;
+    string modeleArticle;
+    double prixJourArticle;
+    int nbStockArticle;
+    list <Article*> articlesLoues;
+    list <Location*> locations;
+
+    cout << "Enregistrer un nouveau client :" << endl;
+    cout << "Référence du client: " << endl;
+    cin >> refClient;
+    cout << "Adresse du client: " << endl;
+    cin >> adresseClient;
+    cout << "Numéro de téléphone du client: " << endl;
+    cin >> numeroTelephoneClient;
+    cout << "Nouvelle(s) location(s): " << endl;
+    cout << "Nombre de locations :" << endl;
+    cin >> nbLocationClient;
+
+    for (i = 0; i < nbLocationClient; i++) {
+        cout<<"Location "<<i+1<<":"<<endl;
+        cout<<"Date de début de la location:"<<endl;
+        cin>>dateDebut;
+        typeArticle="NA";
+        cout << "Article(s) loué(s): " << endl;
+        while (typeArticle.compare("R") != 0) {
+            typeArticle="NA";
+            while (typeArticle.compare("FR") != 0 && typeArticle.compare("MR") != 0 && typeArticle.compare("SM") != 0 && typeArticle.compare("ML") != 0 && typeArticle.compare("R") != 0) {
+                cout << "type d'article?(Fauteuil roulant : FR, Matelas air : MR, Souleve Malade : SM, Materiel lit : ML, retour:R)-> ";
+                cin >> typeArticle;
+            }
+
+            if (typeArticle == "R") {
+                break;
+            }
+            cout << "Reférence?(0000AZ)";
+            cin >> refArticle;
+            cout << "Marque?";
+            cin >> marqueArticle;
+            cout << "modeleArticle?";
+            cin >> modeleArticle;
+            cout << "Prix a la location, journalier?";
+            cin >> prixJourArticle;
+            cout << "Nombre de cet article en stock?";
+            cin >> nbStockArticle;
+
+            if (typeArticle == "FR") {
+                double largeur;
+                double poids;
+                cout << "largeur de l'assise du fauteuil roulant?";
+                cin >> largeur;
+                cout << "poids du fauteuil roulant?";
+                cin >> poids;
+                articlesLoues.push_front(new FauteuilRoulant(refArticle, marqueArticle, modeleArticle, prixJourArticle, nbStockArticle, largeur, poids));
+            } else if (typeArticle == "MR") {
+                string dimension;
+                int pmax;
+                double tpsgonfl;
+                cout << "dimension du matela?";
+                cin >> dimension;
+                cout << "poids maximum supporté?";
+                cin >> pmax;
+                cout << "temps de gonflage?";
+                cin >> tpsgonfl;
+                articlesLoues.push_front(new MatelasAir(refArticle, marqueArticle, modeleArticle, prixJourArticle, nbStockArticle, pmax, dimension, tpsgonfl));
+            } else if (typeArticle == "SM") {
+                int caplevage;
+                int degrepivot;
+                cout << "capacité de levage?";
+                cin >> caplevage;
+                cout << "degre pivot fleau?";
+                cin >> degrepivot;
+                articlesLoues.push_front(new SouleveMalade(refArticle, marqueArticle, modeleArticle, prixJourArticle, nbStockArticle, caplevage, degrepivot));
+            } else if (typeArticle == "ML") {
+                double pmax;
+                string dimension;
+                bool typemat;
+                cout << "Lit médicalisé / table d'alité (1/0)?";
+                cin >> typemat;
+                cout << "poids maximum supporté?";
+                cin >> pmax;
+                cout << "dimensions?";
+                cin >> dimension;
+                articlesLoues.push_front(new MaterielLit(refArticle, marqueArticle, modeleArticle, prixJourArticle, nbStockArticle, pmax, dimension, typemat));
+            }
+        }
+        locations.push_front(new Location(dateDebut, enCours, montantFacture, articlesLoues));
+    }
+
+    this->listeClients.push_front(new Client(refClient, adresseClient, numeroTelephoneClient, locations));
+
 }
 
 void Magasin::afficheListeLocations(Client client) {
@@ -189,11 +292,11 @@ list<Article*> Magasin::getListeArticle() const {
     return listeArticle;
 }
 
-void Magasin::setListeClients(list<Client> listeClients) {
+void Magasin::setListeClients(list<Client*> listeClients) {
     this->listeClients = listeClients;
 }
 
-list<Client> Magasin::getListeClients() const {
+list<Client*> Magasin::getListeClients() const {
     return listeClients;
 }
 

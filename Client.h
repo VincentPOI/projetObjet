@@ -22,7 +22,7 @@ using namespace std;
 class Client {
 public:
     Client();
-    Client(string, string, string);
+    Client(string, string, string, list<Location*>);
     void affiche();
     virtual ~Client();
     void setRefClient(string refClient);
@@ -31,13 +31,13 @@ public:
     string getAdresseClient();
     void setNumeroTelephoneClient(string numeroTelephoneClient);
     string getNumeroTelephoneClient();
-    void setLocations(list<Location> locations);
-    list<Location> getLocations() const;
+    void setLocations(list<Location*> locations);
+    list<Location*> getLocations() const;
 private:
     string refClient;
     string adresseClient;
     string numeroTelephoneClient;
-    list <Location> locations;
+    list <Location*> locations;
 };
 
 #endif /* CLIENT_H */

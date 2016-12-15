@@ -17,11 +17,14 @@
 Location::Location() {
     this->dateDebut="NA";
     this->montantFacture=0;
+    this->enCours=false;
 }
 
-Location::Location(string dateDebut, double montantFacture) {
+Location::Location(string dateDebut, double montantFacture, bool enCours, list<Article*> articlesLoues) {
     this->dateDebut=dateDebut;
     this->montantFacture=montantFacture; 
+    this->enCours=true;
+    this->articlesLoues=articlesLoues;
 }
 
 void Location::setDateDebut(string dateDebut) {
@@ -32,6 +35,15 @@ string Location::getDateDebut() {
     return this->dateDebut;
 }
 
+void Location::setEnCours(bool enCours) {
+    this->enCours = enCours;
+}
+
+bool Location::getEnCours() {
+    return this->enCours;
+}
+
+
 void Location::setMontantFacture(double montantFacture) {
     this->montantFacture=montantFacture;
 }
@@ -41,11 +53,11 @@ double Location::getMontantFacture() {
 }
 
 void Location::setArticlesLouees(list<Article*> articlesLouees) {
-    this->articlesLouees = articlesLouees;
+    this->articlesLoues = articlesLouees;
 }
 
 list<Article*> Location::getArticlesLouees() const {
-    return articlesLouees;
+    return articlesLoues;
 }
 
 void Location::affiche() {
@@ -54,7 +66,17 @@ void Location::affiche() {
 }
 
 double Location::calculMontant() {
-    //NE FAIT RIEN
+//    char toujoursEnCours;
+//    if(this->dateFin.compare("NA")!=0){
+//        cout<<"Location toujours en cours ? (O/N)")<<endl;
+//        cin>>toujoursEnCours;
+//        if(toujoursEnCours=='O'){
+//            cout<<""<<endl;
+//            
+//        }
+//        
+//        
+//    }
 }
 
 

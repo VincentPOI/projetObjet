@@ -66,7 +66,7 @@ int main(int argc, char** argv) {
             case 4 : ;
             break;
  
-            case 5 : ;
+            case 5 : magasin.enregistrerClient();
             break;
  
             case 6 : ;
