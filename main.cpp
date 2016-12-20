@@ -27,6 +27,12 @@ using namespace std;
  */
 int main(int argc, char** argv) {
     
+    list<Article*> listArticle;
+    listArticle.push_front(new FauteuilRoulant("0001FR","bite","moule",45, 46, 47, 48));
+    Location location("18/12/2016", "NA", 0, listArticle);
+    location.setDateFin("NA");
+    location.calculMontant();
+    location.calculMontant();
     int menu;
     Magasin magasin;
     do

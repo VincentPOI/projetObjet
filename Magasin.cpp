@@ -261,7 +261,7 @@ void Magasin::enregistrerClient() {
                 articlesLoues.push_front(new MaterielLit(refArticle, marqueArticle, modeleArticle, prixJourArticle, nbStockArticle, pmax, dimension, typemat));
             }
         }
-        locations.push_front(new Location(dateDebut, enCours, montantFacture, articlesLoues));
+        locations.push_front(new Location(dateDebut, "NA", montantFacture, articlesLoues));
     }
 
     this->listeClients.push_front(new Client(refClient, adresseClient, numeroTelephoneClient, locations));

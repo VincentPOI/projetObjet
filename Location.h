@@ -12,7 +12,7 @@
  */
 
 #ifndef LOCATION_H
-#define LOCATION_H
+#include <stdlib.h>
 #include <string>
 #include <list>
 #include <iostream>
@@ -23,21 +23,21 @@ using namespace std;
 class Location {
 public:
     Location();
-    Location(string, double, bool, list<Article*>);
+    Location(string, string, double, list<Article*>);
     virtual ~Location();
     double calculMontant();
     void affiche();
     void setDateDebut(string dateDebut);
     string getDateDebut();
-    void setEnCours(bool enCours);
-    bool getEnCours();
+    void setDateFin(string dateFin);
+    string getDateFin();
     void setMontantFacture(double montantFacture);
     double getMontantFacture();
     void setArticlesLouees(list<Article*> articlesLouees);
     list<Article*> getArticlesLouees() const;
 private:
     string dateDebut;
-    bool enCours;
+    string dateFin;
     double montantFacture;
     list <Article*> articlesLoues;
 };
