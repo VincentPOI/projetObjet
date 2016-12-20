@@ -15,14 +15,15 @@
 #define ARTICLE_H
 #include<iostream>
 #include <string>
-using namespace std ;
+using namespace std;
 
 class Article {
 public:
     Article();
     Article(string refArticle, string marqueArticle, string modeleArticle, double prixJourArticle, int nbStockarticle);
-    affiche();
+    virtual void affiche(ostream& ostr);
     virtual ~Article();
+    bool operator <(const Article &v);
     void setNbStockarticle(int nbStockarticle);
     int getNbStockarticle() const;
     void setPrixJourArticle(double prixJourArticle);
@@ -40,6 +41,6 @@ protected:
     double prixJourArticle;
     int nbStockarticle;
 };
-
 #endif /* ARTICLE_H */
+
 

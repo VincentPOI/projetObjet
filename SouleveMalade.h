@@ -6,26 +6,30 @@
 
 /* 
  * File:   SouleveMalade.h
- * Author: vincent
+ * Author: hadrien
  *
- * Created on 18 novembre 2016, 14:52
+ * Created on 18 novembre 2016, 15:23
  */
 
 #ifndef SOULEVEMALADE_H
 #define SOULEVEMALADE_H
-
 #include "Article.h"
+#include <string>
+using namespace std;
 
-
-class SouleveMalade: public Article{
+class SouleveMalade : public Article {
 public:
     SouleveMalade();
-    SouleveMalade(int,int);
-    affiche();
+    SouleveMalade(string, string, string, double, int, int, int);
     virtual ~SouleveMalade();
+    void affiche(ostream& ostr);
+    void setCapaciteLevage(int);
+    int getCapaciteLevage();
+    void setDegrePivotFleau(int);
+    int getDegrePivotFleau();
 private:
-    
-
+    int capaciteLevage;
+    int degrePivotFleau;
 };
 
 #endif /* SOULEVEMALADE_H */
