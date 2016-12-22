@@ -217,12 +217,11 @@ void Magasin::loadStock() {
                                 a->setNbStockarticle(strtod(ligne.c_str(), NULL));
                                 break;
 
-                            case 5:
-                                mr->setDimensionMatelas(ligne);
+                            case 5:mr->setPoidsMaximumSupporte(strtod(ligne.c_str(), NULL));
                                 break;
 
                             case 6:
-                                mr->setPoidsMaximumSupporte(strtod(ligne.c_str(), NULL));
+                                mr->setDimensionMatelas(ligne);
                                 break;
 
                             case 7:
@@ -310,130 +309,200 @@ void Magasin::enregistrerClient() {
     string refClient;
     string adresseClient;
     string numeroTelephoneClient;
-    int nbLocationClient;
+    int nbArticles;
     int i;
     string dateDebut;
-    bool enCours = true;
     double montantFacture = 0;
-    string typeArticle;
     string refArticle;
-    string marqueArticle;
-    string modeleArticle;
-    double prixJourArticle;
-    int nbStockArticle;
     list <Article*> articlesLoues;
     list <Location*> locations;
 
-    cout << "Enregistrer un nouveau client :" << endl;
+    cout << "Enregistrer un nouveau client : \n";
     cout << "Référence du client: ";
     cin >> refClient;
+    cin.ignore();
+
     cout << "Adresse du client: ";
-    cin >> adresseClient;
+    getline(cin, adresseClient);
+
     cout << "Numéro de téléphone du client: ";
     cin >> numeroTelephoneClient;
-    cout << "Nouvelle(s) location(s): " << endl;
-    cout << "Nombre de locations : ";
-    cin >> nbLocationClient;
 
-    for (i = 0; i < nbLocationClient; i++) {
-        cout << "Location " << i + 1 << ":" << endl;
-        cout << "Date de début de la location:" << endl;
-        cin>>dateDebut;
-        typeArticle = "NA";
-        cout << "Article(s) loué(s): " << endl;
-        while (typeArticle.compare("R") != 0) {
-            typeArticle = "NA";
-            while (typeArticle.compare("FR") != 0 && typeArticle.compare("MR") != 0 && typeArticle.compare("SM") != 0 && typeArticle.compare("ML") != 0 && typeArticle.compare("R") != 0) {
-                cout << "type d'article?(Fauteuil roulant : FR, Matelas air : MR, Souleve Malade : SM, Materiel lit : ML, retour:R)-> ";
-                cin >> typeArticle;
-            }
+    cout << "Nouvelle(s) location(s): \n";
+    cout << "Date de début de la location: ";
+    cin >> dateDebut;
 
-            if (typeArticle == "R") {
-                break;
-            }
-            cout << "Reférence?(0000AZ)";
-            cin >> refArticle;
-            cout << "Marque?";
-            cin >> marqueArticle;
-            cout << "modeleArticle?";
-            cin >> modeleArticle;
-            cout << "Prix a la location, journalier?";
-            cin >> prixJourArticle;
-            cout << "Nombre de cet article en stock?";
-            cin >> nbStockArticle;
+    cout << "Nombre d'articles : ";
+    cin >> nbArticles;
 
-            if (typeArticle == "FR") {
-                double largeur;
-                double poids;
-                cout << "largeur de l'assise du fauteuil roulant?";
-                cin >> largeur;
-                cout << "poids du fauteuil roulant?";
-                cin >> poids;
-                articlesLoues.push_front(new FauteuilRoulant(refArticle, marqueArticle, modeleArticle, prixJourArticle, nbStockArticle, largeur, poids));
-            } else if (typeArticle == "MR") {
-                string dimension;
-                int pmax;
-                double tpsgonfl;
-                cout << "dimension du matela?";
-                cin >> dimension;
-                cout << "poids maximum supporté?";
-                cin >> pmax;
-                cout << "temps de gonflage?";
-                cin >> tpsgonfl;
-                articlesLoues.push_front(new MatelasAir(refArticle, marqueArticle, modeleArticle, prixJourArticle, nbStockArticle, pmax, dimension, tpsgonfl));
-            } else if (typeArticle == "SM") {
-                int caplevage;
-                int degrepivot;
-                cout << "capacité de levage?";
-                cin >> caplevage;
-                cout << "degre pivot fleau?";
-                cin >> degrepivot;
-                articlesLoues.push_front(new SouleveMalade(refArticle, marqueArticle, modeleArticle, prixJourArticle, nbStockArticle, caplevage, degrepivot));
-            } else if (typeArticle == "ML") {
-                double pmax;
-                string dimension;
-                bool typemat;
-                cout << "Lit médicalisé / table d'alité (1/0)?";
-                cin >> typemat;
-                cout << "poids maximum supporté?";
-                cin >> pmax;
-                cout << "dimensions?";
-                cin >> dimension;
-                articlesLoues.push_front(new MaterielLit(refArticle, marqueArticle, modeleArticle, prixJourArticle, nbStockArticle, pmax, dimension, typemat));
+    for (i = 0; i < nbArticles; i++) {
+        cout << "Aricle " << i + 1 << ":" << endl;
+        cout << "référence de l'articles : ";
+        cin >> refArticle;
+        for (list<Article*>::iterator it = this->listeArticle.begin(); it != this->listeArticle.end(); it++) {
+            if ((*it)->getRefArticle() == refArticle) {
+                (*it)->setNbStockarticle((*it)->getNbStockarticle() - 1);
+                articlesLoues.push_front((*it));
             }
         }
-        locations.push_front(new Location(dateDebut, enCours, montantFacture, articlesLoues));
     }
+    locations.push_front(new Location(dateDebut, "NA", montantFacture, articlesLoues));
     this->listeClients.push_front(new Client(refClient, adresseClient, numeroTelephoneClient, locations));
-
 }
 
-void Magasin::afficherClient(string refClient) {
+void Magasin::enregistrerLocation() {
+    string refClient;
+    int nbArticles;
+    int i;
+    string dateDebut;
+    double montantFacture = 0;
+    string refArticle;
+    list <Article*> articlesLoues;
+    list <Location*> locations;
+    cout << "référence du client? ";
+    cin >> refClient;
+
 
     for (list<Client*>::iterator it = this->listeClients.begin(); it != this->listeClients.end(); it++) {
         if ((*it)->getRefClient() == refClient) {
-            cout << "client n°" << (*it)->getRefClient() << " : \n";
+            cout << "Nouvelle(s) location(s): \n";
+            cout << "Date de début de la location: ";
+            cin >> dateDebut;
+
+            cout << "Nombre d'articles : ";
+            cin >> nbArticles;
+
+            for (i = 0; i < nbArticles; i++) {
+                cout << "Aricle " << i + 1 << ":" << endl;
+                cout << "référence de l'articles : ";
+                cin >> refArticle;
+                for (list<Article*>::iterator ite = this->listeArticle.begin(); ite != this->listeArticle.end(); ite++) {
+                    if ((*ite)->getRefArticle() == refArticle) {
+                        (*ite)->setNbStockarticle((*ite)->getNbStockarticle() - 1);
+                        articlesLoues.push_front((*ite));
+                    }
+                }
+            }
+            locations = (*it)->getLocations();
+            locations.push_front(new Location(dateDebut, "NA", montantFacture, articlesLoues));
+            (*it)->setLocations(locations);
+        }
+    }
+}
+
+void Magasin::afficherClient() {
+    string refClient;
+    cout << "ref client? ";
+    cin >> refClient;
+    for (list<Client*>::iterator it = this->listeClients.begin(); it != this->listeClients.end(); it++) {
+        if ((*it)->getRefClient() == refClient) {
             (*it)->affiche();
         }
     }
 }
 
-void Magasin::rendreArticle() {
+void Magasin::rendreLocation() {
     string refClient;
     string dateLoc;
+    string dateFin;
+    Location* locaremove;
     cout << "référence du client? ";
     cin >> refClient;
     cout << "date de la location (jj/mm/aaaa)?";
     cin >> dateLoc;
+    cout << "date de fin de la location (jj/mm/aaaa)?";
+    cin >> dateFin;
     for (list<Client*>::iterator it = this->listeClients.begin(); it != this->listeClients.end(); it++) {
-        if ((*it)->getRefClient() == refClient) {
-            for (list<Location*>::iterator ite = (*it)->getLocations().begin(); ite != (*it)->getLocations().end(); it++) {
-                if ((*ite)->getDateDebut() == dateLoc) {
-                    (*it)->getLocations().remove((*ite));
+        Client* client = (*it);
+        list <Location*> locations = client->getLocations();
+        if (client->getRefClient() == refClient) {
+            for (list<Location*>::iterator ite = locations.begin(); ite != locations.end(); ite++) {
+                Location* location = (*ite);
+                if (location->getDateDebut() == dateLoc) {
+                    location->setDateFin(dateFin);
+                    location->calculMontant();
+                    list<Article*> article = location->getArticlesLouees();
+                    for (list<Article*>::iterator itera = article.begin(); itera != article.end(); itera++) {
+                        Article* article = (*itera);
+                        article->setNbStockarticle(article->getNbStockarticle() + 1);
+                    }
+                    this->archiverLocation(location);
+                    locaremove = location;
+                } else {
                 }
+
             }
+            locations.remove(locaremove);
+            (*it)->setLocations(locations);
+        } else {
         }
     }
+}
+
+void Magasin::archiverLocation(Location * location) {
+    string date = location->getDateDebut();
+    string mois;
+    string annee;
+    mois = date.substr(date.find("/") + 1, +2);
+    annee = date.substr(6);
+    string nomfichier = annee + mois + ".loc";
+
+    ofstream fichier(nomfichier.c_str(), ios::out | ios::app);
+
+    if (fichier) {
+        fichier << "location du " << location->getDateDebut() << " au " << location->getDateFin() << "\n";
+        fichier << "montant : " << location->getMontantFacture() << "\n";
+        fichier.close();
+    } else
+        cerr << "Erreur à l'ouverture !" << endl;
+}
+
+void Magasin::afficherRevenuPeriode() {
+    string debut;
+    string fin;
+    string ligne;
+    double total;
+    string mois;
+    string annee;
+    int m;
+    int a;
+    cout << "début période? (aaaamm) ";
+    cin >> debut;
+    cout << "fin période? (aaaamm) ";
+    cin >> fin;
+    mois = debut.substr(4);
+    m = strtod(mois.c_str(), NULL);
+    annee = debut.substr(0, +4);
+    a = strtod(annee.c_str(), NULL);
+
+
+    while (debut != fin) {
+
+        ifstream fichier((debut + ".loc").c_str(), ios::in);
+        if (fichier) {
+            while (getline(fichier, ligne)) {
+                if (ligne.find("montant") != ligne.npos) {
+                    ligne = ligne.substr(ligne.find(":") + 2);
+                    total = total + strtod(ligne.c_str(), NULL);
+                } else {
+                }
+            }
+            fichier.close();
+        }
+        if (m > 0 && m < 10) {
+            mois = "0" + to_string(m);
+        } else {
+            mois = to_string(m);
+        }
+        annee = to_string(a);
+        debut.replace(0, debut.size(), annee + mois);
+        if (m == 12) {
+            a++;
+            m = 0;
+        }
+        m++;
+    }
+    cout << "montant gagner sur cette période : " << total << "\n";
 }
 
 void Magasin::jeterArticle() {
@@ -448,10 +517,6 @@ void Magasin::afficheListeLocations(Client client) {
 }
 
 void Magasin::calculMontantRecettes(string periode) {
-
-}
-
-void Magasin::enregistrerLocation(Client client) {
 
 }
 

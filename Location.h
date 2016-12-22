@@ -15,6 +15,7 @@
 #define LOCATION_H
 #include <string>
 #include <list>
+#include <stdlib.h>
 #include <iostream>
 #include "Article.h"
 using namespace std;
@@ -23,22 +24,21 @@ using namespace std;
 class Location {
 public:
     Location();
-    Location(string, int, double, list<Article*> articlesLouees);
-    Location(string, int, list<Article*> articlesLouees);
+    Location(string, string, double, list<Article*>);
     virtual ~Location();
-    double calculMontant();
+    void calculMontant();
     void affiche();
     void setDateDebut(string dateDebut);
     string getDateDebut();
-    void setEnCours(bool enCours);
-    bool getEnCours();
+    void setDateFin(string dateFin);
+    string getDateFin();
     void setMontantFacture(double montantFacture);
     double getMontantFacture();
     void setArticlesLouees(list<Article*> articlesLouees);
     list<Article*> getArticlesLouees() const;
 private:
     string dateDebut;
-    int nbJours;
+    string dateFin;
     double montantFacture;
     list <Article*> articlesLoues;
 };

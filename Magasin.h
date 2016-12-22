@@ -34,10 +34,12 @@ public:
     void loadStock();
     void afficheListeLocations(Client);
     void restitutionArticle(Client);
-    void enregistrerLocation(Client);
+    void enregistrerLocation();
     void enregistrerClient();
-    void afficherClient(string);
-    void rendreArticle();
+    void afficherClient();
+    void rendreLocation();
+    void archiverLocation(Location*location);
+    void afficherRevenuPeriode();
     void calculMontantRecettes(string);
     virtual ~Magasin();
     void setListeArticle(list<Article*> listeArticle);

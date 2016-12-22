@@ -1,0 +1,30 @@
+************** Article : 0001ML ***************
+Marque de l'article : lit
+Modele de l'article : litdal
+Prix par jour de l'article : 45
+Nombre d'article en stock : 20
+Dimension du matériel : 40x12x42
+Poids maximum du materiel : 300
+Type de matériel : Lit médicalisé
+************** Article : 0001SM ***************
+Marque de l'article : caterpilar
+Modele de l'article : grue
+Prix par jour de l'article : 2000
+Nombre d'article en stock : 3
+Capacité de levage du fauteuil: 2000
+Degré de pivot du fléau: 45
+************** Article : 0001MR ***************
+Marque de l'article : quechua
+Modele de l'article : boucyland
+Prix par jour de l'article : 3
+Nombre d'article en stock : 15
+Poids maximum suporté : 200
+dimension du matelas : 180x200
+temps de gonflage : 1
+************** Article : 0001FR ***************
+Marque de l'article : ferrari
+Modele de l'article : turbo+
+Prix par jour de l'article : 100
+Nombre d'article en stock : 10
+Largeur de l'assise : 100
+Poids du fauteuil : 2
